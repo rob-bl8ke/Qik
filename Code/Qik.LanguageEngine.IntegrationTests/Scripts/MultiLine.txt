@@ -1,0 +1,17 @@
+﻿
+@codeInput = expression [Title="Code Input"] {
+	return
+		"{" + NEWLINE +
+			indentLine("int x = y;", TAB, 1) + NEWLINE +
+			indentLine("if (x == 2)", TAB, 1) + NEWLINE +
+			indentLine("return y;", TAB, 2) + NEWLINE +
+			indentLine("else", TAB, 1) + NEWLINE +
+			indentLine("return x;", TAB, 2) + NEWLINE +
+		"}\n";
+};
+
+@displayEvents = expression[Title="Display Events"] {
+	return "events: {" + NEWLINE +
+		doubleQuotes("hello world") + NEWLINE +
+	"};";
+};

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props')" />
+  <Import Project="..\..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props" Condition="Exists('..\..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FADE2BF1-6916-457C-9B0C-442227C59E62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CygSoft.CodeCat.Qik.LanguageEngine</RootNamespace>
+    <AssemblyName>CygSoft.CodeCat.Qik.LanguageEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime, Version=4.6.0.0, Culture=neutral, PublicKeyToken=09abb75b9ed49849, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.4.6.6\lib\net45\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Antlr\ErrorListener.cs" />
+    <Compile Include="Antlr\ExpressionVisitor.cs" />
+    <Compile Include="Antlr\SymbolArguments.cs" />
+    <Compile Include="Antlr\UserInputVisitor.cs" />
+    <Compile Include="BatchCompiler.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="CompileEngine.cs" />
+    <Compile Include="Compiler.cs" />
+    <Compile Include="ErrorReport.cs" />
+    <Compile Include="Funcs\BaseFunction.cs" />
+    <Compile Include="Funcs\CamelCaseFunction.cs" />
+    <Compile Include="Funcs\ConcatenateFunction.cs" />
+    <Compile Include="Funcs\ConstantFunction.cs" />
+    <Compile Include="Funcs\CurrentDateFunction.cs" />
+    <Compile Include="Funcs\DoubleQuoteFunction.cs" />
+    <Compile Include="Funcs\FloatFunction.cs" />
+    <Compile Include="Funcs\FuncInfo.cs" />
+    <Compile Include="Funcs\GuidFunction.cs" />
+    <Compile Include="Funcs\HtmlDecodeFunction.cs" />
+    <Compile Include="Funcs\HtmlEncodeFunction.cs" />
+    <Compile Include="Funcs\IfDecissionFunction.cs" />
+    <Compile Include="Funcs\IndentFunction.cs" />
+    <Compile Include="Funcs\IntegerFunction.cs" />
+    <Compile Include="Funcs\LowerCaseFunction.cs" />
+    <Compile Include="Funcs\NewlineFunction.cs" />
+    <Compile Include="Funcs\PadLeftFunction.cs" />
+    <Compile Include="Funcs\PadRightFunction.cs" />
+    <Compile Include="Funcs\ProperCaseFunction.cs" />
+    <Compile Include="Funcs\RemovePunctuationFunction.cs" />
+    <Compile Include="Funcs\RemoveSpacesFunction.cs" />
+    <Compile Include="Funcs\ReplaceFunction.cs" />
+    <Compile Include="Funcs\TextFunction.cs" />
+    <Compile Include="Funcs\UpperCaseFunction.cs" />
+    <Compile Include="Funcs\VariableFunction.cs" />
+    <Compile Include="Generator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scope\GlobalTable.cs" />
+    <Compile Include="Symbols\AutoInputSymbol.cs" />
+    <Compile Include="Symbols\BaseSymbol.cs" />
+    <Compile Include="Symbols\ExpressionSymbol.cs" />
+    <Compile Include="Symbols\InputSymbol.cs" />
+    <Compile Include="Symbols\OptionInputSymbol.cs" />
+    <Compile Include="Symbols\TextInputSymbol.cs" />
+    <Compile Include="SyntaxValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CygSoft.CodeCat.Qik.LanguageEngine.Infrastructure\CygSoft.CodeCat.Qik.LanguageEngine.Infrastructure.csproj">
+      <Project>{e73234b4-5bfa-40ad-b1fd-a35226ca0bb4}</Project>
+      <Name>CygSoft.CodeCat.Qik.LanguageEngine.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Antlr4 Include="Antlr\QikTemplate.g4">
+      <Generator>MSBuild:Compile</Generator>
+      <CustomToolNamespace>CygSoft.CodeCat.Qik.LanguageEngine.Antlr</CustomToolNamespace>
+    </Antlr4>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets" Condition="Exists('..\..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props'))" />
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets'))" />
+  </Target>
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

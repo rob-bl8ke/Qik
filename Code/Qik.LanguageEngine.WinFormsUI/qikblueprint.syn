@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Language Name="Text file" Startblock="Text">
+  <FileTypes>
+    <FileType Extension=".txt" Name="Text file"/>
+  </FileTypes>
+
+  <Block Name="Text" Style="Text" PatternStyle="Keyword" EscapeChar="" IsMultiline="true">
+
+
+
+    <!-- Keywords that can exist inside this block -->
+    <Keywords>
+      <PatternGroup Name="Keywords" Style="Keyword">
+      </PatternGroup>
+    </Keywords>
+    <!-- Operators that can exist inside this block -->
+    <Operators>
+      <PatternGroup name="Placeholder" Style="Placeholder">
+        <Pattern Text="@{[a-zA-Z_][a-zA-Z0-9_]*}" IsComplex="true" />
+      </PatternGroup>
+    </Operators>
+  </Block>
+
+  <Style Name="Text" ForeColor="" BackColor="" Bold="false" Italic="false" Underline="false" />
+  <Style Name="CS Operator" ForeColor="Red" BackColor="" Bold="false" Italic="false" Underline="false" />
+  <Style Name="Keyword" ForeColor="Blue" BackColor="" Bold="true" Italic="false" Underline="false" />
+  <Style Name="Placeholder" ForeColor="Black" BackColor="Yellow" Bold="true" Italic="false" Underline="false" />
+</Language>

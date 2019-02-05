@@ -1,0 +1,49 @@
+﻿/* ************************************************************************************
+MSDF Stored Procedure Template.
+************************************************************************************ */
+
+@authorName = expression [Title="Author Name"] {
+	return "Rob Blake";
+};
+
+@authorCode = expression [Title="Author Code"] {
+	return "0505c";
+};
+
+@date = expression [Title="Date"] {
+	return currentDate("dd/MM/yyyy");
+};
+
+@desc = text [Title="Description"];
+@name = text [Title="Procedure Title"];
+
+@database = options [Title="Database", Default="MSDF_DM"] {
+	return
+		option "MSDF_DM" [Title="MSDF_DM"],
+		option "MSDF_ADMIN" [Title="MSDF_ADMIN"],
+		option "MSDF_DW" [Title="MSDF_DW"],
+		option "MSDF_STAGING" [Title="MSDF_STAGING"],
+		option "MSDF_VALISTRACTOR" [Title="MSDF_VALISTRACTOR"];
+};
+
+@context = options [Title="Context", Default="FE"] {
+	return
+		option "FE" [Title="Front End"],
+		option "BE" [Title="Back End"];
+};
+
+@procName = expression [Title="Procedure Name"] {
+	return with options @context
+		if 		("FE") 	return "pFE_" + @name,
+		if 		("BE") 	return "pRpt_" + @name;
+};
+
+@fileTitle = expression [Title="File Title"] {
+	return @procName + ".sql";
+};
+
+@filePath = expression [Title="File Path"] {
+	return with options @context
+		if 		("FE") 	return "D:\Sandbox\MSDF\Code\SQLQueries\DataMartV2\FrontEnd\" + @fileTitle,
+		if 		("BE") 	return "D:\Sandbox\MSDF\Code\SQLQueries\DataMartV2\Reports\" + @fileTitle;
+};

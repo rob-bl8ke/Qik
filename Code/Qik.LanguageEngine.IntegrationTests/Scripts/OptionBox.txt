@@ -1,0 +1,5 @@
+﻿@nonPlaceHolderOption = options [Title="Read Only Options", Default="False", IsPlaceholder="false"] {
+	return
+		option "False" [Title="False"],
+		option "True" [Title="True"];
+};

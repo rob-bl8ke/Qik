@@ -1,0 +1,15 @@
+﻿
+@table = text [Title="Table Name"];
+@userPrimaryKey = text [Title="User Primary Key"];
+
+@primaryKeyOption = options [Title="Choose Primary Key Option"] {
+    return
+        option "CUSTOM" [Title="Own Primary Key"],
+        option "INFERRED" [Title="Inferred Primary Key"];
+};
+
+@inferredPrimaryKey = expression[Title="Inferred Primary Key"] {
+    return with options @primaryKeyOption
+        if      ("CUSTOM")   return @userPrimaryKey,
+        if      ("INFERRED")   return @table + "Id";
+};

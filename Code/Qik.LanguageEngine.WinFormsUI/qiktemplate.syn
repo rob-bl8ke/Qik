@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Language Name="qiktemplate" Startblock="Text">
+  <FileTypes>
+    <FileType Extension=".txt" Name="Text file"/>
+  </FileTypes>
+
+  <Block Name="Text" Style="Text" PatternStyle="Keyword" EscapeChar="" IsMultiline="true">
+
+      <!-- Blocks that can exist inside this block -->
+      <ChildBlocks>
+        <Child Name="Qik Multiline Comment" />
+        <Child Name="Qik Singleline Comment" />
+        <Child Name="Qik String" />
+      </ChildBlocks>
+
+    <Keywords>
+      <PatternGroup Name="Variables" Style="Variable">
+        <!--<Pattern Text="(@{[a-zA-Z]+[a-zA-Z0-9_]*})" IsComplex="true" />-->
+        <Pattern Text="(@[a-zA-Z]+[a-zA-Z0-9_]*)" IsComplex="true" />
+      </PatternGroup>
+    </Keywords>
+  </Block>
+
+  <Block Name="Qik String" Style="Qik String" EscapeChar="\" IsMultiline="false">
+    <Scope Start="&quot;" End="&quot;" Style="Java String" />
+    <Operators>
+      <PatternGroup name="URL" Style="Java URL">
+        <Pattern Text="http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?" IsComplex="true" />
+      </PatternGroup>
+    </Operators>
+  </Block>
+  
+  <Block Name="Qik Multiline Comment" Style="Qik Comment" EscapeChar="" IsMultiline="true">
+    <Scope Start="/*" End="*/" Style="Qik Comment" Text="/*...*/"/>
+    <Operators>
+      <PatternGroup name="URL" Style="Java URL">
+        <Pattern Text="http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?" IsComplex="true" />
+      </PatternGroup>
+    </Operators>
+  </Block>
+  <Block Name="Qik Singleline Comment" Style="Qik Comment" EscapeChar="" IsMultiline="false">
+    <Scope Start="//" End="" Style="Qik Comment" />
+  </Block>
+  
+  <Style Name="Qik Comment" ForeColor="Green" BackColor="" Bold="false" Italic="false" Underline="false" />
+  <Style Name="Text" ForeColor="" BackColor="" Bold="false" Italic="false" Underline="false" />
+  <Style Name="Variable" ForeColor="Magenta" BackColor="" Bold="true" Italic="false" Underline="false" />
+  <!--<Style Name="Variable" ForeColor="Black" BackColor="Yellow" Bold="true" Italic="false" Underline="false" />-->
+  <Style Name="Qik String" ForeColor="Teal" BackColor="" Bold="true" Italic="false" Underline="false" />
+  
+</Language>
